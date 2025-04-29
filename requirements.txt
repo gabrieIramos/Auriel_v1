@@ -1,3 +1,4 @@
 openai
 google.generativeai
 flask
+yfinance scikit-learn
