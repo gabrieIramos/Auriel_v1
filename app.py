@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import bcrypt
 from users_dal import users_DAL
+from apiKeys_dal import apiKeys_DAL
 
 app = Flask(__name__)
 app.secret_key = "secreta-chave"  # Necessário para usar sessões
-dal = users_DAL()
+dal_users = users_DAL()
+dal_apiKyes = apiKeys_DAL()
 
 users = {"admin": "admin"}  # username: password
 
@@ -17,7 +19,7 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         
-        user = dal.get_user(username)
+        user = dal_users.get_user(username)
         if user:
             hashed_password = user["password"]
             # Verifica se a senha informada corresponde à senha armazenada
@@ -34,6 +36,19 @@ def login():
 #####################################################
 @app.route("/chat")
 def chat():
+    if request.method == "POST":        
+        gemini_key = request.form["gemini_key"]
+        openai_key = request.form["openai_key"]
+        deepseek_key = request.form["deepseek_key"]
+        copilot_key = request.form["copilot_key"]
+
+        user = dal_users.get_user(session['user'])
+        if user:
+            dal_apiKyes.create_api_key(user["id"], gemini_key, openai_key, deepseek_key, copilot_key)
+        else:
+            return render_template("chat.html")     
+
+
     # Verifica se o usuário está logado
     if 'user' not in session:
         return redirect(url_for("login"))  
@@ -57,11 +72,11 @@ def register():
         username = request.form["username"]
         password = request.form["password"]        
         
-        if dal.get_user(username):
+        if dal_users.get_user(username):
             return render_template("register.html", register_erro="Usuário já existe.")        
         else:
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-            dal.create_user(username, hashed_password.decode('utf-8'))
+            dal_users.create_user(username, hashed_password.decode('utf-8'))
 
             return redirect(url_for("login"))
     return render_template("register.html")

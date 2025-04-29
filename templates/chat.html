@@ -26,17 +26,19 @@
 
     <!-- Painel de configurações -->
     <div id="settings-panel" class="settings hidden">
-        <h2>Configurações de API</h2>
-        <label for="gemini-key">Gemini API Key</label>
-        <input type="text" id="gemini-key">
-        <label for="openai-key">OpenAI API Key</label>
-        <input type="text" id="openai-key">
-        <label for="deepseek-key">Deep Seek API Key</label>
-        <input type="text" id="deepseek-key">
-        <label for="copilot-key">Copilot API Key</label>
-        <input type="text" id="copilot-key">
-        <button id="close-settings">Fechar</button>
-        <button id="save-settings">Salvar</button>
+        <form method="POST" action="/chat">
+            <h2>Configurações de API</h2>
+            <label for="gemini-key">Gemini API Key</label>
+            <input type="text" id="gemini-key">
+            <label for="openai-key">OpenAI API Key</label>
+            <input type="text" id="openai-key">
+            <label for="deepseek-key">Deep Seek API Key</label>
+            <input type="text" id="deepseek-key">
+            <label for="copilot-key">Copilot API Key</label>
+            <input type="text" id="copilot-key">
+            <button id="close-settings">Fechar</button>
+            <button id="save-settings">Salvar</button>
+        </form>        
     </div>
 
     <script src="static/script.js"></script>
