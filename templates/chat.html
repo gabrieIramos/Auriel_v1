@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulação de Conversa</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
+        .chatbox { background: #fff; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .mensagem { margin-bottom: 10px; }
+        .voce { font-weight: bold; color: blue; }
+        .bot { font-weight: bold; color: green; }
+    </style>
+</head>
+<body>
+    <div class="chatbox">
+        <h2>Conversa Simulada</h2>
+        {% for linha in conversa %}
+            <div class="mensagem">
+                {% if 'Você:' in linha %}
+                    <span class="voce">{{ linha }}</span>
+                {% else %}
+                    <span class="bot">{{ linha }}</span>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <form method="POST">
+            <input type="text" name="mensagem" placeholder="Digite sua mensagem..." required>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
