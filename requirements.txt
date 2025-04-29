@@ -1,4 +1,6 @@
 openai
 google.generativeai
 flask
-yfinance scikit-learn
+supabase
+bcrypt
+python-dotenv

@@ -1,33 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simulação de Conversa</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
-        .chatbox { background: #fff; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .mensagem { margin-bottom: 10px; }
-        .voce { font-weight: bold; color: blue; }
-        .bot { font-weight: bold; color: green; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="static/style_chat.css">
 </head>
 <body>
-    <div class="chatbox">
-        <h2>Conversa Simulada</h2>
-        {% for linha in conversa %}
-            <div class="mensagem">
-                {% if 'Você:' in linha %}
-                    <span class="voce">{{ linha }}</span>
-                {% else %}
-                    <span class="bot">{{ linha }}</span>
-                {% endif %}
-            </div>
-        {% endfor %}
-
-        <form method="POST">
-            <input type="text" name="mensagem" placeholder="Digite sua mensagem..." required>
-            <button type="submit">Enviar</button>
+    <div class="chat-container">
+        <header>
+            {% if user_login %}
+            <h1>{{ user_login }}</h1>
+            {% endif %}
+            
+            <button id="settings-button">Configurações</button>
+        </header>
+        <div class="chat-box">
+            <p>Mensagens do chat aparecerão aqui...</p>
+        </div>
+        <form>
+            <input type="text" placeholder="Digite sua mensagem..." class="chat-input">
+            <button type="submit" class="send-button">Enviar</button>
         </form>
     </div>
+
+    <!-- Painel de configurações -->
+    <div id="settings-panel" class="settings hidden">
+        <h2>Configurações de API</h2>
+        <label for="gemini-key">Gemini API Key</label>
+        <input type="text" id="gemini-key">
+        <label for="openai-key">OpenAI API Key</label>
+        <input type="text" id="openai-key">
+        <label for="deepseek-key">Deep Seek API Key</label>
+        <input type="text" id="deepseek-key">
+        <label for="copilot-key">Copilot API Key</label>
+        <input type="text" id="copilot-key">
+        <button id="close-settings">Fechar</button>
+        <button id="save-settings">Salvar</button>
+    </div>
+
+    <script src="static/script.js"></script>
 </body>
 </html>

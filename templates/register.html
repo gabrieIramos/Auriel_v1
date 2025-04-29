@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Cadastro</h1>
+        <form method="POST" action="/register">
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" required>
+
+            {% if register_erro %}
+            <p class="error-message">{{ register_erro }}</p>
+            {% endif %}
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+        <div class="register-link">
+            <p>Já tem uma conta? <a href="/login">Faça login</a></p>
+        </div>
+    </div>
+</body>
+</html>

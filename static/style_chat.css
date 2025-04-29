@@ -1,0 +1,188 @@
+/* Estilo global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #232523, #ecf7ec); /* Gradiente suave */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Estilo do container principal do chat */
+.chat-container {
+    width: 90%;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80vh;
+}
+
+/* Cabeçalho */
+header {
+    background: #388e3c; /* Verde escuro */
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+#settings-button {
+    background: #fff;
+    color: #388e3c;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#settings-button:hover {
+    background: #81c784; /* Verde claro */
+    color: #fff;
+}
+
+/* Área de mensagens */
+.chat-box {
+    padding: 20px;
+    height: calc(100% - 150px);
+    overflow-y: auto;
+    background: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Formulário para envio de mensagens */
+form {
+    display: flex;
+    padding: 15px;
+    background: #f9f9f9;
+    gap: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.send-button {
+    background: #388e3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.send-button:hover {
+    background: #4caf50;
+}
+
+/* Painel de configurações */
+.settings {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 450px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.settings h2 {
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.settings label {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.settings input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Botões no painel de configurações */
+#close-settings, #save-settings {
+    background: #388e3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#close-settings:hover {
+    background: #e53935; /* Tom vermelho ao passar o mouse */
+}
+
+#save-settings:hover {
+    background: #4caf50; /* Tom verde claro ao passar o mouse */
+}
+
+/* Tornar o painel invisível inicialmente */
+.hidden {
+    display: none;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .chat-container {
+        height: 85vh;
+    }
+
+    .chat-box {
+        font-size: 0.8rem;
+    }
+
+    .settings h2 {
+        font-size: 1.5rem;
+    }
+
+    #close-settings, #save-settings {
+        font-size: 0.9rem;
+    }
+}
