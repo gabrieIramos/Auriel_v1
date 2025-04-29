@@ -14,7 +14,7 @@ class DadosAcoes:
     
     def obter_dados_acoes(ticker, start, end):
             ticker = 'AAPL'  # Ticker da ação da Apple
-            data = yf.download(ticker, start='2018-01-01', end='2023-01-01')  # Dados de 5 anos
+            data = yf.download(ticker, start='2025-04-29', end='2025-04-29')  # Dados de 5 anos
 
             print("Dados obtidos:")
             print(data.head())
@@ -36,8 +36,8 @@ class DadosAcoes:
                 
             y_pred = model.predict(X_test)
             mse = mean_squared_error(y_test, y_pred)
-            if mse:
-                return f'Erro quadrático médio (MSE): {mse}'    
+            # if mse:
+            #     return f'Erro quadrático médio (MSE): {mse}'    
                 
             for actual, predicted in zip(y_test[:5], y_pred[:5]):
                 return f"Atual: {actual:.2f}, Previsto: {predicted:.2f}" 
