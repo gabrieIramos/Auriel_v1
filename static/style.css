@@ -158,6 +158,86 @@ button:hover {
     font-weight: bold;
 }
 
+/* Estilo global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #232523, #ecf7ec); /* Gradiente suave */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container principal */
+.chat-container {
+    width: 90%;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Inputs do formulário */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra interna */
+}
+
+/* Botões */
+button {
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+button[type="submit"] {
+    background: #388e3c;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background: #4caf50; /* Tom mais claro */
+}
+
+button[name="action"][value="save-settings"] {
+    background: #ffa726;
+    color: white;
+}
+
+button[name="action"][value="save-settings"]:hover {
+    background: #fb8c00;
+}
+
+
 
 /* Responsividade */
 @media screen and (max-width: 768px) {

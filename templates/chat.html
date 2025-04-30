@@ -19,26 +19,22 @@
             <p>Mensagens do chat aparecerão aqui...</p>
         </div>
         <form>
-            <input type="text" placeholder="Digite sua mensagem..." class="chat-input">
-            <button type="submit" class="send-button">Enviar</button>
+            <input type="text" id="message" placeholder="Digite sua mensagem..." class="chat-input">
+            <button type="submit" name="action" value="send-mensage" class="send-button">Enviar</button>
         </form>
     </div>
 
     <!-- Painel de configurações -->
-    <div id="settings-panel" class="settings hidden">
-        <form method="POST" action="/chat">
+    <div id="settings-panel" class="settings hidden">        
             <h2>Configurações de API</h2>
-            <label for="gemini-key">Gemini API Key</label>
-            <input type="text" id="gemini-key">
-            <label for="openai-key">OpenAI API Key</label>
-            <input type="text" id="openai-key">
-            <label for="deepseek-key">Deep Seek API Key</label>
-            <input type="text" id="deepseek-key">
-            <label for="copilot-key">Copilot API Key</label>
-            <input type="text" id="copilot-key">
+            <form method="POST" action="/chat">
+                <input type="text" name="gemini_key" placeholder="Gemini API Key">
+                <input type="text" name="openai_key" placeholder="OpenAI API Key">
+                <input type="text" name="deepseek_key" placeholder="DeepSeek API Key">
+                <input type="text" name="copilot_key" placeholder="Copilot API Key">
+                <button type="submit" name="action" value="save-settings">Salvar Configurações</button>
+            </form>
             <button id="close-settings">Fechar</button>
-            <button id="save-settings">Salvar</button>
-        </form>        
     </div>
 
     <script src="static/script.js"></script>

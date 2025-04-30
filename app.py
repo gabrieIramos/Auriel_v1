@@ -34,21 +34,33 @@ def login():
 #####################################################
 ##################CHAT###############################
 #####################################################
-@app.route("/chat")
+@app.route("/chat", methods=["GET", "POST"])
 def chat():
-    if request.method == "POST":        
-        gemini_key = request.form["gemini_key"]
-        openai_key = request.form["openai_key"]
-        deepseek_key = request.form["deepseek_key"]
-        copilot_key = request.form["copilot_key"]
+    if request.method == "POST": 
+        if request.form.get("action") == "save-settings":
 
-        user = dal_users.get_user(session['user'])
-        if user:
-            dal_apiKyes.create_api_key(user["id"], gemini_key, openai_key, deepseek_key, copilot_key)
-        else:
-            return render_template("chat.html")     
+            gemini_key = request.form.get("gemini_key")
+            openai_key = request.form.get("openai_key")
+            deepseek_key = request.form.get("deepseek_key")
+            copilot_key = request.form.get("copilot_key")
 
+            user = dal_users.get_user(session['user'])
+            if user:
+                if dal_apiKyes.get_apikey(user["id"]):                    #
+                    dal_apiKyes.update_api_key(user["id"], gemini_key, openai_key, deepseek_key, copilot_key)
+                else:
+                    dal_apiKyes.create_api_key(user["id"], gemini_key, openai_key, deepseek_key, copilot_key)
+            else:
+                return render_template("chat.html") 
+            
+        if request.form.get("send-message"):
+            message = request.form["message"]
+            # Aqui você pode adicionar a lógica para processar a mensagem enviada pelo usuário
+            # Por exemplo, enviar a mensagem para um modelo de IA e obter uma resposta
+            response = "Resposta do modelo de IA"
+            return render_template("chat.html", user_login= "olá " + session['user'])
 
+         
     # Verifica se o usuário está logado
     if 'user' not in session:
         return redirect(url_for("login"))  

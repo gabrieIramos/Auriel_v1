@@ -11,7 +11,7 @@ class apiKeys_DAL:
         self.supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
     def create_api_key(self, id_user, gemini_key, openAI_key, deepseek_key, copilot_key):        
-        data = {"id_user": id_user, "gemini_key": gemini_key, "openAI_key": openAI_key, "deepseek_key": deepseek_key, "copilot_key": copilot_key}
+        data = {"id_user": id_user, "gemini_key": gemini_key, "openai_key": openAI_key, "deepseek_key": deepseek_key, "copilot_key": copilot_key}
         response = self.supabase.table("api_key").insert(data).execute()
         
         return response
@@ -21,3 +21,9 @@ class apiKeys_DAL:
         if response.data:
             return response.data[0]
         return None
+    
+    def update_api_key(self, id_user, gemini_key, openAI_key, deepseek_key, copilot_key):        
+        data = {"id_user": id_user, "gemini_key": gemini_key, "openai_key": openAI_key, "deepseek_key": deepseek_key, "copilot_key": copilot_key}
+        response = self.supabase.table("api_key").update(data).eq("id_user", id_user).execute()
+        
+        return response
