@@ -11,6 +11,12 @@ dal_users = users_DAL()
 dal_apiKyes = apiKeys_DAL()
 gp = GenerateResponseIAs()
 
+
+@app.route('/')
+def home():
+    return redirect(url_for("login"))
+
+
 #####################################################
 ##################LOGIN###############################
 #####################################################
