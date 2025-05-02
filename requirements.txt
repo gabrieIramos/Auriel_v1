@@ -4,3 +4,4 @@ flask
 supabase
 bcrypt
 python-dotenv
+azure-ai-inference

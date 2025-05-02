@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #232523, #ecf7ec); /* Gradiente suave */
-    color: #333;
+    background-color: #2c2c2c; /* Fundo cinza escuro */
+    color: white; /* Texto branco */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,9 +20,9 @@ body {
 .chat-container {
     width: 90%;
     max-width: 600px;
-    background: #ffffff;
+    background: #3a3a3a; /* Cinza um pouco mais claro */
     border-radius: 12px;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* Sombra escura */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -65,42 +65,68 @@ header h1 {
     padding: 20px;
     height: calc(100% - 150px);
     overflow-y: auto;
-    background: #f9f9f9;
-    border-bottom: 1px solid #ccc;
+    background: #4a4a4a; /* Fundo cinza escuro para melhor contraste */
+    border-bottom: 1px solid #333;
     font-size: 0.9rem;
-    color: #666;
+    color: white; /* Mantém letras brancas */
+}
+
+/* Estilo das mensagens */
+.chat-message {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+/* Mensagem do usuário */
+.user-message {
+    background: #007bff;
+    color: white;
+    text-align: right;
+    margin-left: auto; /* Alinhado à direita */
+}
+
+/* Mensagem do chatbot */
+.bot-message {
+    background: #666;
+    color: white;
+    text-align: left;
 }
 
 /* Formulário para envio de mensagens */
 form {
     display: flex;
     padding: 15px;
-    background: #f9f9f9;
+    background: #3a3a3a;
     gap: 10px;
 }
 
+/* Campo de entrada */
 .chat-input {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: none;
+    border-radius: 6px;
     font-size: 1rem;
-    outline: none;
+    background: #222;
+    color: white;
 }
 
+/* Botão de envio */
 .send-button {
-    background: #388e3c;
-    color: #fff;
+    padding: 10px 15px;
+    background: #ff9800;
+    color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: bold;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    font-size: 1rem;
 }
 
 .send-button:hover {
-    background: #4caf50;
+    background: #e68900;
 }
 
 /* Painel de configurações */
@@ -111,10 +137,10 @@ form {
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 450px;
-    background: #ffffff;
+    background: #333;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -123,23 +149,25 @@ form {
 
 .settings h2 {
     font-size: 1.8rem;
-    color: #333;
+    color: white;
     text-align: center;
     margin-bottom: 15px;
 }
 
 .settings label {
     font-size: 1rem;
-    color: #555;
+    color: #ccc;
     margin-bottom: 5px;
 }
 
 .settings input[type="text"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #666;
     border-radius: 8px;
     font-size: 1rem;
+    background: #222;
+    color: white;
 }
 
 /* Botões no painel de configurações */
@@ -156,17 +184,22 @@ form {
 }
 
 #close-settings:hover {
-    background: #e53935; /* Tom vermelho ao passar o mouse */
+    background: #e53935; /* Vermelho ao passar o mouse */
 }
 
 #save-settings:hover {
-    background: #4caf50; /* Tom verde claro ao passar o mouse */
+    background: #4caf50; /* Verde claro ao passar o mouse */
 }
 
 /* Tornar o painel invisível inicialmente */
 .hidden {
     display: none;
 }
+
+.destaque {
+    font-weight: bold;
+    color: #222427;
+  }
 
 /* Responsividade */
 @media screen and (max-width: 768px) {

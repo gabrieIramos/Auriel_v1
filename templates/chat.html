@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link rel="stylesheet" href="static/style_chat.css">
 </head>
+
 <body>
     <div class="chat-container">
         <header>
             {% if user_login %}
             <h1>{{ user_login }}</h1>
             {% endif %}
-            
+
             <button id="settings-button">Configurações</button>
         </header>
-        <div class="chat-box">
-            <p>Mensagens do chat aparecerão aqui...</p>
+        <div class="chat-box" id="chat-box">
+            {% for msg in messages %}
+                <div class="chat-message {% if msg.sender == 'Você' %}user-message{% else %}bot-message{% endif %}">
+                    <p><strong>{{ msg.sender }}:</strong> {{ msg.message }}</p>
+                </div>
+            {% endfor %}
         </div>
-        <form>
-            <input type="text" id="message" placeholder="Digite sua mensagem..." class="chat-input">
-            <button type="submit" name="action" value="send-mensage" class="send-button">Enviar</button>
+        <form id="chat-form">
+            <input type="text" id="message-input" name="message" placeholder="Digite sua mensagem..." class="chat-input">
+            <button type="submit" class="send-button">Enviar</button>
         </form>
     </div>
 
     <!-- Painel de configurações -->
-    <div id="settings-panel" class="settings hidden">        
+    <form method="POST" action="/chat">
+        <div id="settings-panel" class="settings hidden">
             <h2>Configurações de API</h2>
-            <form method="POST" action="/chat">
-                <input type="text" name="gemini_key" placeholder="Gemini API Key">
-                <input type="text" name="openai_key" placeholder="OpenAI API Key">
-                <input type="text" name="deepseek_key" placeholder="DeepSeek API Key">
-                <input type="text" name="copilot_key" placeholder="Copilot API Key">
-                <button type="submit" name="action" value="save-settings">Salvar Configurações</button>
-            </form>
+            <input type="text" name="gemini_key" placeholder="Gemini API Key">
+            <input type="text" name="openai_key" placeholder="OpenAI API Key">
+            <input type="text" name="deepseek_key" placeholder="DeepSeek API Key">
+            <input type="text" name="copilot_key" placeholder="Copilot API Key">
+            <input type="text" name="githubmodels_key" placeholder="GitHubModels API Key">
+            <button id="save-settings" type="submit" name="action" value="save-settings">Salvar Configurações</button>
             <button id="close-settings">Fechar</button>
-    </div>
+        </div>
+    </form>
 
     <script src="static/script.js"></script>
+    <script>
+
+    </script>
 </body>
+
 </html>
