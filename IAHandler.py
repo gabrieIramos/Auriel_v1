@@ -18,7 +18,7 @@ class GenerateResponseIAs:
         
         githubmodels_key = dal_apiKyes.get_githubmodels_key(user_id)
         gemini_key = dal_apiKyes.get_gemini_key(user_id)
-        msg_final = []
+        msg_final = ['', '', ''] # [openai, deepseek, llama]
         contador = datetime.now()
         print(f"Chave Gemini: {gemini_key} | Chave GithubModels: {githubmodels_key}")
         
